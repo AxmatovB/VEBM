@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - SportsFit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /*--->*/
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6b00;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff6b00;
+        }
+        
+        .active {
+            color: #ff6b00 !important;
+            font-weight: bold;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /*--->*/
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/300') center/cover no-repeat;
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /*--->*/
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #333;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #ff6b00;
+        }
+        
+        /*--->*/
+        .main-services {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .service-card {
+            flex: 0 0 calc(33.33% - 20px);
+            margin-bottom: 40px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-color: #ddd;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .service-text {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        /*--->*/
+        .pricing {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .pricing-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .pricing-box {
+            flex: 0 0 calc(33.33% - 20px);
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .pricing-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+        
+        .pricing-level {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .pricing-price {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #ff6b00;
+        }
+        
+        .pricing-price span {
+            font-size: 16px;
+            font-weight: normal;
+            color: #666;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            padding: 20px;
+        }
+        
+        .pricing-features li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            color: #666;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-btn {
+            margin: 20px 0 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ff6b00;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #e05d00;
+        }
+        
+        /*--->*/
+        .special-programs {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .program-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .program-item {
+            flex: 0 0 calc(50% - 15px);
+            margin-bottom: 30px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+        }
+        
+        .program-item-img {
+            flex: 0 0 40%;
+            background-color: #ddd;
+        }
+        
+        .program-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .program-item-content {
+            flex: 0 0 60%;
+            padding: 25px;
+        }
+        
+        .program-item-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .program-item-text {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        /*--->*/
+        .facilities {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .facility-item {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .facility-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .facility-icon {
+            font-size: 40px;
+            color: #ff6b00;
+            margin-bottom: 20px;
+        }
+        
+        .facility-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .facility-text {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /*--->*/
+        .faq {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background-color: #f9f9f9;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .faq-question.active::after {
+            content: '-';
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .faq-answer.show {
+            padding: 20px;
+            max-height: 1000px;
+        }
+        
+        /*--->*/
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-column {
+            flex: 0 0 calc(25% - 20px);
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #ff6b00;
+        }
+        
+        .footer-column p, .footer-column li {
+            color: #bbb;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ff6b00;
+        }
+        
+        .social-icons {
+            display: flex;
+        }
+        
+        .social-icons a {
+            color: white;
+            background-color: #444;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: #ff6b00;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            margin-top: 30px;
+            color: #bbb;
+        }
+        
+        /*--->*/
+        @media screen and (max-width: 992px) {
+            .service-card {
+                flex: 0 0 calc(50% - 15px);
+            }
+            
+            .pricing-box {
+                flex: 0 0 calc(50% - 15px);
+                margin-bottom: 30px;
+            }
+            
+            .pricing-container {
+                justify-content: space-around;
+            }
+            
+            .program-item {
+                flex: 0 0 100%;
+            }
+            
+            .facilities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-column {
+                flex: 0 0 calc(50% - 15px);
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: block;
+                font-size: 24px;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background-color: #333;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+            }
+            
+            .nav-links.show {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .program-item {
+                flex-direction: column;
+            }
+            
+            .program-item-img {
+                flex: 0 0 200px;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .service-card {
+                flex: 0 0 100%;
+            }
+            
+            .pricing-box {
+                flex: 0 0 100%;
+            }
+            
+            .facilities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-column {
+                flex: 0 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">SportsFit</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="Services page.html" class="active">Services</a></li>
+                    <li><a href="Trainers page.html">Trainers</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>Discover our range of fitness programs, facilities, and membership options designed to help you achieve your goals.</p>
+        </div>
+    </section>
+
+    <section class="main-services">
+        <div class="container">
+            <div class="section-title">
+                <h2>What We Offer</h2>
+            </div>
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="C:\Users\Bobur\Desktop\Project\images\9.jpg" alt="Personal Training">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Personal Training</h3>
+                        <p class="service-text">Get personalized workout plans and one-on-one guidance from our certified personal trainers. Whether you're a beginner or an advanced athlete, we'll help you achieve your fitness goals.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="C:\Users\Bobur\Desktop\Project\images\10.webp" alt="Group Classes">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Group Classes</h3>
+                        <p class="service-text">Join our energetic group fitness classes including yoga, HIIT, spinning, Zumba, and more. Our certified instructors will keep you motivated and help you stay on track.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="C:\Users\Bobur\Desktop\Project\images\11.webp" alt="Strength Training">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Strength Training</h3>
+                        <p class="service-text">Build muscle, increase strength, and improve your overall fitness with our comprehensive strength training programs using free weights and state-of-the-art equipment.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="C:\Users\Bobur\Desktop\Project\images\12.webp" alt="Cardio Fitness">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Cardio Fitness</h3>
+                        <p class="service-text">Improve your cardiovascular health with our variety of cardio equipment and programs. From treadmills and ellipticals to high-intensity interval training sessions.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="C:\Users\Bobur\Desktop\Project\images\13.jpg" alt="Nutrition Counseling">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Nutrition Counseling</h3>
+                        <p class="service-text">Get expert advice on nutrition from our registered dietitians. We offer personalized meal plans and nutritional guidance to complement your fitness routine.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="C:\Users\Bobur\Desktop\Project\images\14.jpg" alt="Wellness Programs">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Wellness Programs</h3>
+                        <p class="service-text">Focus on your overall wellbeing with our holistic wellness programs including stress management, meditation classes, and lifestyle coaching.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Membership Options</h2>
+            </div>
+            <div class="pricing-container">
+                <div class="pricing-box">
+                    <div class="pricing-header">
+                        <div class="pricing-level">Basic</div>
+                    </div>
+                    <div class="pricing-price">$49<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Access to gym facilities</li>
+                        <li>Basic fitness assessment</li>
+                        <li>Standard gym hours</li>
+                        <li>Access to cardio & weights area</li>
+                        <li>Locker room access</li>
+                        <li><del>Group classes</del></li>
+                        <li><del>Personal training sessions</del></li>
+                    </ul>
+                    <div class="pricing-btn">
+                        <a href="contact.html" class="btn">Join Now</a>
+                    </div>
+                </div>
+                <div class="pricing-box">
+                    <div class="pricing-header">
+                        <div class="pricing-level">Premium</div>
+                    </div>
+                    <div class="pricing-price">$79<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Access to gym facilities</li>
+                        <li>Comprehensive fitness assessment</li>
+                        <li>Extended gym hours</li>
+                        <li>Access to all equipment areas</li>
+                        <li>Locker room access</li>
+                        <li>Unlimited group classes</li>
+                        <li>2 personal training sessions/month</li>
+                    </ul>
+                    <div class="pricing-btn">
+                        <a href="contact.html" class="btn">Join Now</a>
+                    </div>
+                </div>
+                <div class="pricing-box">
+                    <div class="pricing-header">
+                        <div class="pricing-level">Elite</div>
+                    </div>
+                    <div class="pricing-price">$119<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>24/7 access to gym facilities</li>
+                        <li>Advanced fitness & health assessment</li>
+                        <li>Premium locker with towel service</li>
+                        <li>Access to all equipment & facilities</li>
+                        <li>Unlimited group classes</li>
+                        <li>4 personal training sessions/month</li>
+                        <li>Nutrition consultation</li>
+                    </ul>
+                    <div class="pricing-btn">
+                        <a href="contact.html" class="btn">Join Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="special-programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Specialized Programs</h2>
+            </div>
+            <div class="program-container">
+                <div class="program-item">
+                    <div class="program-item-img">
+                        <img src="C:15.jpg" alt="Senior Fitness">
+                    </div>
+                    <div class="program-item-content">
+                        <h3 class="program-item-title">Senior Fitness</h3>
+                        <p class="program-item-text">Our senior fitness program is designed specifically for older adults. Focus on mobility, balance, strength, and overall wellbeing with low-impact exercises and personalized attention.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <div class="program-item-img">
+                        <img src="16.jpg" alt="Youth Sports">
+                    </div>
+                    <div class="program-item-content">
+                        <h3 class="program-item-title">Youth Sports</h3>
+                        <p class="program-item-text">Help your children develop athletic skills, confidence, and teamwork through our youth sports programs. We offer age-appropriate activities for kids from 5-15 years old.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <div class="program-item-img">
+                        <img src="17.webp" alt="Weight Loss Program">
+                    </div>
+                    <div class="program-item-content">
+                        <h3 class="program-item-title">Weight Loss Program</h3>
+                        <p class="program-item-text">Our comprehensive weight loss program combines exercise, nutrition counseling, and behavioral coaching to help you achieve sustainable results and a healthier lifestyle.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="program-item">
+                    <div class="program-item-img">
+                        <img src="18.jpeg" alt="Rehabilitation">
+                    </div>
+                    <div class="program-item-content">
+                        <h3 class="program-item-title">Rehabilitation</h3>
+                        <p class="program-item-text">If you're recovering from an injury or surgery, our rehabilitation program offers specialized exercises and guidance to help you regain strength and mobility safely.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="facilities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Facilities</h2>
+            </div>
+            <div class="facilities-grid">
+                <div class="facility-item">
+                    <div class="facility-icon">🏋️</div>
+                    <h3 class="facility-title">Weightlifting Area</h3>
+                    <p class="facility-text">Comprehensive free weight area with dumbbells, barbells, benches, and racks for all your strength training needs.</p>
+                </div>
+                <div class="facility-item">
+                    <div class="facility-icon">🏃</div>
+                    <h3 class="facility-title">Cardio Zone</h3>
+                    <p class="facility-text">State-of-the-art treadmills, ellipticals, stair masters, and rowing machines for effective cardio workouts.</p>
+                </div>
+                <div class="facility-item">
+                    <div class="facility-icon">🧘</div>
+                    <h3 class="facility-title">Yoga Studio</h3>
+                    <p class="facility-text">Peaceful studio space dedicated to yoga, pilates, and other mind-body classes.</p>
+                </div>
+                <div class="facility-item">
+                    <div class="facility-icon">🚿</div>
+                    <h3 class="facility-title">Locker Rooms</h3>
+                    <p class="facility-text">Modern locker rooms with showers, changing areas, and secure storage for your belongings.</p>
+                </div>
+                <div class="facility-item">
+                    <div class="facility-icon">🏀</div>
+                    <h3 class="facility-title">Basketball Court</h3>
+                    <p class="facility-text">Full-size basketball court for open play, organized games, and basketball training sessions.</p>
+                </div>
+                <div class="facility-item">
+                    <div class="facility-icon">🥤</div>
+                    <h3 class="facility-title">Juice Bar</h3>
+                    <p class="facility-text">Refreshing smoothies, protein shakes, and healthy snacks to fuel your workouts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">What are your operating hours?</div>
+                    <div class="faq-answer">
+                        <p>Our standard operating hours are Monday to Friday from 6:00 AM to 10:00 PM, Saturday from 7:00 AM to 8:00 PM, and Sunday from 8:00 AM to 6:00 PM. Elite members have 24/7 access.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you offer any trial periods?</div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer a 7-day trial period for new members. This gives you the opportunity to explore our facilities and try our services before committing to a membership.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I freeze my membership if needed?</div>
+                    <div class="faq-answer">
+                        <p>Yes, you can freeze your membership for up to 3 months per year due to illness, injury, or extended travel. A small maintenance fee may apply during the freezing period.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do I need to bring my own equipment?</div>
+                    <div class="faq-answer">
+                        <p>We provide all the necessary fitness equipment for your workouts. You only need to bring appropriate workout attire, athletic shoes, and a water bottle. Towel service is available for Elite members.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is there parking available?</div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer free parking for all our members in our dedicated parking lot. The parking area is well-lit and monitored for your safety.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>SportsFit</h3>
+                    <p>Your destination for fitness and wellness. We are committed to helping you achieve your fitness goals in a supportive and motivating environment.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about_us.html">About Us</a></li>
+                        <li><a href="Services page.html">Services</a></li>
+                        <li><a href="Trainers page.html">Trainers</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Working Hours</h3>
+                    <p>Monday - Friday: 6:00 AM - 10:00 PM</p>
+                    <p>Saturday: 7:00 AM - 8:00 PM</p>
+                    <p>Sunday: 8:00 AM - 6:00 PM</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p>123 Fitness Street, Sportsville</p>
+                    <p>Phone: (123) 456-7890</p>
+                    <p>Email: info@sportsfit.com</p>
+                    <div class="social-icons">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Instagram">i</a>
+                        <a href="#" title="Twitter">t</a>
+                        <a href="#" title="YouTube">y</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 SportsFit. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

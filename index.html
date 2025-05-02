@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportsFit - Your Fitness Destination</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /*--->*/
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6b00;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff6b00;
+        }
+        
+        .active {
+            color: #ff6b00 !important;
+            font-weight: bold;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /*--->*/
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ff6b00;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #e05d00;
+        }
+        
+        /*--->*/
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #333;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #ff6b00;
+        }
+        
+        .features-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .feature-box {
+            flex: 0 0 calc(33.33% - 20px);
+            text-align: center;
+            padding: 30px;
+            margin-bottom: 30px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: #ff6b00;
+            margin-bottom: 20px;
+        }
+        
+        .feature-box h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .feature-box p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /*--->*/
+        .programs {
+            padding: 80px 0;
+            background-color: #f5f5f5;
+        }
+        
+        .programs-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .program-card {
+            flex: 0 0 calc(33.33% - 20px);
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .program-img {
+            height: 200px;
+            background-color: #ddd;
+        }
+        
+        .program-content {
+            padding: 20px;
+        }
+        
+        .program-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .program-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        /*--->*/
+        .testimonials {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial-item {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+        
+        .testimonial-item.active {
+            display: block;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .testimonial-nav button {
+            background-color: #ddd;
+            border: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .testimonial-nav button.active {
+            background-color: #ff6b00;
+        }
+        
+        /*--->*/
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/api/placeholder/1200/400') center/cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-column {
+            flex: 0 0 calc(25% - 20px);
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #ff6b00;
+        }
+        
+        .footer-column p, .footer-column li {
+            color: #bbb;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ff6b00;
+        }
+        
+        .social-icons {
+            display: flex;
+        }
+        
+        .social-icons a {
+            color: white;
+            background-color: #444;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: #ff6b00;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            margin-top: 30px;
+            color: #bbb;
+        }
+        
+        /*--->*/
+        @media screen and (max-width: 992px) {
+            .feature-box, .program-card {
+                flex: 0 0 calc(50% - 15px);
+            }
+            
+            .footer-column {
+                flex: 0 0 calc(50% - 15px);
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: block;
+                font-size: 24px;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background-color: #333;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+            }
+            
+            .nav-links.show {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .feature-box, .program-card {
+                flex: 0 0 100%;
+            }
+            
+            .footer-column {
+                flex: 0 0 100%;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">SportsFit</div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="Services page.html">Services</a></li>
+                    <li><a href="Trainers page.html">Trainers</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">☰</div>
+            </nav>
+        </div>
+    </header>
+  
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Get Fit, Stay Strong</h1>
+                <p>Join our sports club and transform your life with our expert trainers and state-of-the-art facilities.</p>
+                <a href="contact.html" class="btn">Join Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+            </div>
+            <div class="features-container">
+                <div class="feature-box">
+                    <div class="feature-icon">🏋️</div>
+                    <h3>Modern Equipment</h3>
+                    <p>Our gym is equipped with the latest fitness technology and equipment to make your workout effective and enjoyable.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3>Expert Trainers</h3>
+                    <p>Our certified professional trainers will help you achieve your fitness goals with personalized training plans.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🧘</div>
+                    <h3>Various Programs</h3>
+                    <p>From weight training to yoga, we offer a wide range of programs suitable for all fitness levels and goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Programs</h2>
+            </div>
+            <div class="programs-container">
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="C:\Users\Bobur\Desktop\Project\images\01.jpg" alt="Weight Training" width="100%" height="100%">
+                    </div>
+                    <div class="program-content">
+                        <h3>Weight Training</h3>
+                        <p>Build strength and muscle with our comprehensive weight training program supervised by expert trainers.</p>
+                        <a href="Services page.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="C:\Users\Bobur\Desktop\Project\images\02.webp" alt="Cardio Fitness" width="100%" height="100%">
+                    </div>
+                    <div class="program-content">
+                        <h3>Cardio Fitness</h3>
+                        <p>Improve your cardiovascular health and endurance with our varied cardio programs and equipment.</p>
+                        <a href="Services page.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="C:\Users\Bobur\Desktop\Project\images\03.jpg" alt="Yoga Classes" width="100%" height="100%">
+                    </div>
+                    <div class="program-content">
+                        <h3>Yoga Classes</h3>
+                        <p>Find balance, flexibility, and inner peace with our yoga classes suitable for beginners and advanced practitioners.</p>
+                        <a href="Services page.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Members Say</h2>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-item active">
+                    <p class="testimonial-text">"Joining SportsFit was the best decision I've made for my health. The trainers are knowledgeable and the facilities are excellent. I've lost 15kg in just 6 months!"</p>
+                    <div class="testimonial-author">- Alex Johnson</div>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"The variety of classes keeps me motivated. The yoga sessions are particularly amazing - they've helped me manage my stress and improve my flexibility."</p>
+                    <div class="testimonial-author">- Sarah Williams</div>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"As a professional athlete, I needed a gym that could cater to my specific training needs. SportsFit has exceeded my expectations with their specialized equipment and knowledgeable staff."</p>
+                    <div class="testimonial-author">- Michael Chen</div>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="active" data-index="0"></button>
+                    <button data-index="1"></button>
+                    <button data-index="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Start Your Fitness Journey?</h2>
+            <p>Join our sports club today and take the first step towards a healthier, stronger you. We offer flexible membership options to suit your needs and budget.</p>
+            <a href="contact.html" class="btn">Join Now</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>SportsFit</h3>
+                    <p>Your destination for fitness and wellness. We are committed to helping you achieve your fitness goals in a supportive and motivating environment.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about_us.html">About Us</a></li>
+                        <li><a href="Services page.html">Services</a></li>
+                        <li><a href="Trainers page.html">Trainers</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Working Hours</h3>
+                    <p>Monday - Friday: 6:00 AM - 10:00 PM</p>
+                    <p>Saturday: 7:00 AM - 8:00 PM</p>
+                    <p>Sunday: 8:00 AM - 6:00 PM</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p>123 Fitness Street, Sportsville</p>
+                    <p>Phone: (123) 456-7890</p>
+                    <p>Email: info@sportsfit.com</p>
+                    <div class="social-icons">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Instagram">i</a>
+                        <a href="#" title="Twitter">t</a>
+                        <a href="#" title="YouTube">y</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 SportsFit. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+
+        const testimonials = document.querySelectorAll('.testimonial-item');
+        const navButtons = document.querySelectorAll('.testimonial-nav button');
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                testimonials.forEach(item => item.classList.remove('active'));
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                const index = button.getAttribute('data-index');
+                testimonials[index].classList.add('active');
+                button.classList.add('active');
+            });
+        });
+
+        let currentIndex = 0;
+        function rotateTestimonials() {
+            testimonials.forEach(item => item.classList.remove('active'));
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            currentIndex = (currentIndex + 1) % testimonials.length;
+            testimonials[currentIndex].classList.add('active');
+            navButtons[currentIndex].classList.add('active');
+        }
+        setInterval(rotateTestimonials, 5000);
+    </script>
+</body>
+</html>
